@@ -8,17 +8,30 @@ import Rank from './components/Rank/Rank';
 import './App.css';
 
 const particlesOptions = {
-                particles: {
-                  number: {
-                    value: 30,
-                    density: {
-                      enable: true,
-                      value_area: 600
-                    }
-                  }
-                }
-              }
+        particles: {
+          number: {
+            value: 30,
+            density: {
+              enable: true,
+              value_area: 600
+            }
+          }
+        }
+      }
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      input: '',
+    }
+  }
+  onInputChange = (event) => {
+    console.log(event.target.value);
+  }
+
+  onButtonSubmit = () => {
+    console.log('click');
+  }
   render() {
     return (
       <div className="App">
@@ -28,7 +41,10 @@ class App extends Component {
         <Navigation />
         <Logo />
         <Rank />
-        <ImageLinkForm />
+        <ImageLinkForm 
+          onInputChange = {this.onInputChange} 
+          onButtonSubmit = {this.onButtonSubmit}
+        />
         {/*
                
                 <FaceRecognition />*/}
