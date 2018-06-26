@@ -8,8 +8,8 @@ import Register from './components/Register/Register';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
-
 import './App.css';
+
 const app = new Clarifai.App({
  apiKey: 'd2f31c559929423fb95f1437d416bb22'
 });
@@ -45,7 +45,7 @@ class App extends Component {
   }
   
   loadUser = (data) => {
-    this.setState({data: {
+    this.setState({user: {
           id: data.id,
           name: data.name,
           email: data.email,
@@ -68,7 +68,6 @@ class App extends Component {
   }
 
   displayFaceBox = (box) => {
-    console.log(box);
     this.setState({box: box})
   }
   onInputChange = (event) => {
@@ -87,7 +86,7 @@ class App extends Component {
               method: 'put',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
-              id: this.state.user.id
+                id: this.state.user.id
               })
             })
               .then(response => response.json())
@@ -112,7 +111,7 @@ class App extends Component {
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       <div className="App">
-      <Particles className='particles'
+        <Particles className='particles'
               params={particlesOptions}
             />
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
